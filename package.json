@@ -5,22 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon ./src/index.js",
+    "build": "nodemon --exec babel-node ./src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "moment": "^2.29.1",
     "nodemon": "^2.0.7",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.15",
-    "@babel/node": "^7.13.13",
-    "@babel/preset-env": "^7.13.15",
     "sequelize-cli": "^6.2.0"
   }
 }
