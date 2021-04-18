@@ -1,6 +1,8 @@
 const { User } = require('./db/models');
 const bcrypt = require('bcrypt');
 /* createUser, getUserById, updateUser, deleteUser */
+
+/*
 const fun_hash_passw = async (password) => {
   try {
     return bcrypt.hash(password, 10);
@@ -31,3 +33,44 @@ createUser({
 })
   .then(console.log)
   .catch(console.err);
+*/
+
+/*getUserById*/
+/*
+const getUserById = async (id) => {
+  try {
+    return (await User.findByPk(id)).get();
+  } catch (e) {
+    throw e;
+  }
+};
+
+getUserById(101).then(console.log).catch(console.error);
+*/
+/*
+const updateUser = async (update_data, condition) => {
+  try {
+    await User.update(update_data, {
+      where: condition,
+    });
+  } catch (e) {
+    throw e;
+  }
+};
+
+updateUser({ lastName: 'Peterson' }, { lastName: 'Surname0' })
+  .then(console.log)
+  .catch(console.err);
+
+const deleteUser = async (condition) => {
+  try {
+    await User.destroy({
+      where: condition,
+    });
+  } catch (e) {
+    throw e;
+  }
+};
+
+deleteUser({ lastName: 'Peterson' });
+*/
