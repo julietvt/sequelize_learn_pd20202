@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 function generate_users_seed() {
   const users = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 20; i++) {
     users.push({
       firstName: `Name${i}`,
       lastName: `Surname${i}`,
@@ -13,7 +13,6 @@ function generate_users_seed() {
       passwordHash: bcrypt.hashSync(`password${i}`, 10),
       createdAt: new Date(),
       updatedAt: new Date(),
-      profilePicture: '',
     });
   }
   return users;
