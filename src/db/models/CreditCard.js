@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       balance: {
-        type: DataTypes.REAL(20, 2),
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
