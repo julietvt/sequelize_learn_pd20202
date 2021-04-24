@@ -1,27 +1,29 @@
-/* Через транзакцию INSERT, UPDATE, DELETE */
-import { CreditCard, sequelize } from './db/models';
-async function card_transaction(fromCardId, toCardId, value) {
+import express from 'express';
+import { User } from './db/models';
+import router from './routes';
+
+const port = process.env.PORT || 5000;
+const app = express();
+app.use(express.json());
+app.use(router);
+
+/*
+//параментры 1- адрес (/ корень проекта), 2 - функция обработки данных, в ней объект запроса и объект ответа
+app.post('/user', async (req, res, next) => {
   try {
-    const fromCard = await CreditCard.findByPk(fromCardId);
-    const toCard = await CreditCard.findByPk(toCardId);
-
-    console.log('Before transaction:');
-    console.log(fromCard.get());
-    console.log(toCard.get());
-
-    const tr = await sequelize.transaction();
-    fromCard.balance -= value;
-    const updatedFromCard = await fromCard.save({ transaction: tr });
-    toCard.balance += value;
-    const updatedToCard = await toCard.save({ transaction: tr });
-    await tr.commit();
-
-    console.log('After transaction:');
-    console.log(fromCard.get());
-    console.log(toCard.get());
+    const createdUser = await User.create(req.body);
+    return res.send(createdUser);
+    //console.log(req.body);
   } catch (e) {
-    console.error(e);
+    next(e);
   }
-}
+});
 
-card_transaction(2, 1, 10000);
+app.use((err, req, res) => {
+  res.status(500).send('Smth broken!');
+});
+*/
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
