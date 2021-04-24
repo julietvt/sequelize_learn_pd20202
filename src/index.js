@@ -1,4 +1,4 @@
-const { User } = require('./db/models');
+const { User, Task } = require('./db/models');
 const bcrypt = require('bcrypt');
 /* createUser, getUserById, updateUser, deleteUser */
 
@@ -74,3 +74,48 @@ const deleteUser = async (condition) => {
 
 deleteUser({ lastName: 'Peterson' });
 */
+
+/*
+В проекте выполнить запросы:
+1. получить пользователей users c их заданиями tasks 
+2. получить задания tasks с owners
+Результаты вывести с помощью map()
+
+
+PS используйте метод findAll в запросах
+в секции options прописывайте критерии:
+where - условие, include - табличку с которой связываем ассициацию
+например,
+выполненные задачи:
+where: { isDone: true}
+*/
+
+async function getUserWithTasks() {
+  try {
+    const result = await User.findAll({
+      limit: 10,
+      attributes: { exclude: ['password'] },
+    });
+    return result.map((item) => item.get());
+  } catch (e) {}
+}
+
+getUserWithTasks().then(console.log);
+
+async function getTasksWithOwners() {
+  try {
+    const result = await Task.findAll({
+      limit: 10,
+      where: {
+        isDone: true,
+      },
+      include: [
+        {
+          model: User,
+          as: 'owner',
+        },
+      ],
+    });
+    return result.map((item) => item.get());
+  }
+}
