@@ -11,17 +11,17 @@ import schemas from '../utils/validation';
 
 const taskRouter = express.Router();
 
-const createUserValidationMV = validationMV(schemas.taskSchema);
+const createTaskValidationMV = validationMV(schemas.taskSchema);
 
-userRouter.post('/', createUserValidationMV(ACTION.CREATE), createTask);
+taskRouter.post('/', createTaskValidationMV(ACTION.CREATE), createTask);
 
-userRouter.patch('/:taskId', createUserValidationMV(ACTION.UPDATE), updateTask);
+taskRouter.patch('/:taskId', createTaskValidationMV(ACTION.UPDATE), updateTask);
 
-userRouter.get('/:taskId', createUserValidationMV(ACTION.READ), getTask);
+taskRouter.get('/:taskId', createTaskValidationMV(ACTION.READ), getTask);
 
-userRouter.delete(
+taskRouter.delete(
   '/:taskId',
-  createUserValidationMV(ACTION.DELETE),
+  createTaskValidationMV(ACTION.DELETE),
   deleteTask
 );
 
