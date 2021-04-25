@@ -1,28 +1,28 @@
 import express from 'express';
-import {} from '../controllers/task';
+import {
+  createTask,
+  deleteTask,
+  updateTask,
+  getTask,
+} from '../controllers/task';
 import validationMV from '../middlewares/validation/validationMV.js';
 import { ACTION } from '../constants';
 import schemas from '../utils/validation';
 
 const taskRouter = express.Router();
 
-/*
-const createUserValidationMV = validationMV(schemas.userSchema);
+const createUserValidationMV = validationMV(schemas.taskSchema);
 
-userRouter.post('/', createUserValidationMV(ACTION.CREATE), createUser);
+userRouter.post('/', createUserValidationMV(ACTION.CREATE), createTask);
 
-userRouter.patch(
-  '/:userId',
-  createUserValidationMV(ACTION.UPDATE),
-  updateUserByPk
-);
+userRouter.patch('/:taskId', createUserValidationMV(ACTION.UPDATE), updateTask);
 
-userRouter.get('/:userId', createUserValidationMV(ACTION.READ), getUserByPk);
+userRouter.get('/:taskId', createUserValidationMV(ACTION.READ), getTask);
 
 userRouter.delete(
-  '/:userId',
+  '/:taskId',
   createUserValidationMV(ACTION.DELETE),
-  deleteUserByPk
+  deleteTask
 );
-*/
+
 export default taskRouter;
