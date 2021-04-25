@@ -1,4 +1,5 @@
-//require('babel-register');   
+//require('@babel/register');  
+require("babel-register"); 
 const path = require('path');
 const common_path = path.resolve('src','db');
 module.exports = {
