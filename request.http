@@ -1,0 +1,9 @@
+POST http://localhost:5000/user
+
+{
+    "firstName": "TestFirstName1",
+    "lastName": "TestLastName1",
+    "email": "testemail1@mail.com",
+    "login": "testuser1",
+    "password": "qwerty123"
+}
